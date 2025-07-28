@@ -2,6 +2,7 @@ import logging
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
 def dodawanie(*liczby):
+    """Adds any number of numbers."""
     if not liczby:
         logging.warning("Brak liczb do dodania.")
         return 0
@@ -10,10 +11,12 @@ def dodawanie(*liczby):
     return sum(liczby)
 
 def odejmowanie(liczba1, liczba2):
+    """Subtracts two numbers."""
     logging.info(f"Odejmuję {liczba2} od {liczba1}")
     return liczba1 - liczba2
 
 def mnozenie(*liczby):
+    """Multiplies any number of numbers."""
     if not liczby:
         logging.warning("Brak liczb do pomnożenia.")
         return 1
@@ -25,6 +28,7 @@ def mnozenie(*liczby):
     return wynik
 
 def dzielenie(liczba1, liczba2):
+    """Divides the first number by the second, supporting division by zero."""
     if liczba2 == 0:
         logging.error("Próba dzielenia przez zero!")
         return "Błąd! Nie można dzielić przez zero!"
