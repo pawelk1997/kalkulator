@@ -20,22 +20,34 @@ def dzielenie(liczba1, liczba2):
     logging.info(f"Dzielę {liczba1} i {liczba2}")
     return liczba1 / liczba2
 
-print("Podaj działanie, posługując się odpowiednią liczbą: 1 Dodawanie, 2 Odejmowanie, 3 Mnożenie, 4 Dzielenie")
-dzialanie = int(input("Podaj działanie: "))
+if __name__ == "__main__":
+    print("Kalkulator")
+    while True:
+        print("Podaj działanie, posługując się odpowiednią liczbą: 1 - Dodawanie, 2 - Odejmowanie, 3 -  Mnożenie, 4 - Dzielenie, 5 - Zamknij program")
 
-liczba1 = int(input("Podaj pierwszą liczbę: "))
-liczba2 = int(input("Podaj drugą liczbę: "))
+        dzialanie = input("Podaj działanie: ")
 
-if dzialanie == 1:
-    print(f"Wynik dodawania liczb {liczba1} oraz {liczba2} to {dodawanie(liczba1, liczba2)}")
-elif dzialanie == 2:
-    print(f"Wynik odejmowania liczb {liczba1} oraz {liczba2} to {odejmowanie(liczba1, liczba2)}")
-elif dzialanie == 3:
-    print(f"Wynik mnożenia liczb {liczba1} oraz {liczba2} to {mnozenie(liczba1, liczba2)}")
-elif dzialanie == 4:
-    if liczba1 == 0 or liczba2 == 0:
-        print("Dzielenie przez 0!")
-    else:
-        print(f"Wynik dzielenia liczb {liczba1} oraz {liczba2} to {dzielenie(liczba1, liczba2)}")
-else:
-    print("Podano nieprawidłowe działanie!")
+        if dzialanie == "5":
+            logging.info("Zamykam progam")
+            break
+
+        if dzialanie in ("1", "2", "3", "4"):
+            try:
+                liczba1 = float(input("Podaj pierwszą liczbę: "))
+                liczba2 = float(input("Podaj drugą liczbę: "))
+            except ValueError:
+                logging.warning("Podano nieprawidłowe dane wejściowe. Należy wprowadzić liczby. Spróbuj jeszcze raz.")
+                continue
+
+            if dzialanie == "1":
+                wynik = dodawanie(liczba1, liczba2)
+            elif dzialanie == "2":
+                wynik = odejmowanie(liczba1, liczba2)
+            elif dzialanie == "3":
+                wynik = mnozenie(liczba1, liczba2)
+            elif dzialanie == "4":
+                wynik = dzielenie(liczba1, liczba2)
+
+            print(f"Wynik: {wynik}")
+        else:
+            logging.warning("Podano nieprawidłowe działanie! Spróbuj jeszcze raz!")
