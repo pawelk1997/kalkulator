@@ -1,13 +1,23 @@
+import logging
+logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
+
 def dodawanie(liczba1, liczba2):
+    logging.info(f"Dodaję {liczba1} i {liczba2}")
     return liczba1 + liczba2
 
 def odejmowanie(liczba1, liczba2):
+    logging.info(f"Odejmuję {liczba1} i {liczba2}")
     return liczba1 - liczba2
 
 def mnozenie(liczba1, liczba2):
+    logging.info(f"Mnożę {liczba1} i {liczba2}")
     return liczba1 * liczba2
 
 def dzielenie(liczba1, liczba2):
+    if liczba2 == 0:
+        logging.error("Próba dzielenia przez zero!")
+        return "Błąd! Nie można dzielić przez zero!"
+    logging.info(f"Dzielę {liczba1} i {liczba2}")
     return liczba1 / liczba2
 
 print("Podaj działanie, posługując się odpowiednią liczbą: 1 Dodawanie, 2 Odejmowanie, 3 Mnożenie, 4 Dzielenie")
